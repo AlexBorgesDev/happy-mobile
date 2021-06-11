@@ -8,6 +8,8 @@ const light = {
 
   primary: '#f4452e',
   bodyBackground: '#f5f7f9',
+
+  shimmer: ['#DCDCDC', '#D1D1D1', '#DCDCDC'],
 };
 
 export const lightPaper: typeof DefaultTheme.colors = {

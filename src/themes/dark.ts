@@ -10,6 +10,8 @@ const dark: Theme = {
 
   primary: '#f4452e',
   bodyBackground: '#0F0F0F',
+
+  shimmer: ['#1B1B1F', '#212126', '#1B1B1F'],
 };
 
 export const darkPaper: typeof DefaultTheme.colors = {
