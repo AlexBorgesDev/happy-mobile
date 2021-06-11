@@ -31,7 +31,7 @@ const Login = ({ navigation }: LoginProps) => {
   const handleLogin = async () => {
     setLoading(true);
 
-    await loginService(email, password, setErrors);
+    await loginService({ email, password }, setErrors);
 
     setLoading(false);
   };
