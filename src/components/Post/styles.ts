@@ -6,7 +6,7 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
-  padding: 0 16px 8px;
+  padding: 0 16px 14px;
 
   color: ${({ theme }) => theme.color};
   font-size: 15px;
@@ -14,7 +14,7 @@ export const Title = styled.Text`
 `;
 
 export const AuthorContainer = styled.View`
-  padding: 8px 16px;
+  padding: 14px 16px;
 
   align-items: center;
   flex-direction: row;
