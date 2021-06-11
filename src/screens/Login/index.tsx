@@ -6,6 +6,9 @@ import { HelperText, TextInput } from 'react-native-paper';
 // Types
 import { LoginProps } from '../../@types/screenProps';
 
+// Services
+import loginService from '../../services/login.service';
+
 import {
   Container,
   styles,
@@ -28,7 +31,9 @@ const Login = ({ navigation }: LoginProps) => {
   const handleLogin = async () => {
     setLoading(true);
 
-    setTimeout(() => setLoading(false), 2500);
+    await loginService(email, password, setErrors);
+
+    setLoading(false);
   };
 
   useEffect(() => {
