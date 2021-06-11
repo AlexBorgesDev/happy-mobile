@@ -5,4 +5,5 @@ export type NotLoggedScreens = {
 
 export type LoggedInScreens = {
   home: undefined;
+  newPost: undefined;
 };

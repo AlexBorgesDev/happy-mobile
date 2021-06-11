@@ -9,6 +9,7 @@ import { LoggedInScreens } from '../@types/navigation';
 
 // Screens
 import Home from '../screens/Home';
+import NewPost from '../screens/NewPost';
 
 const { Navigator, Screen } = createStackNavigator<LoggedInScreens>();
 
@@ -20,6 +21,8 @@ const LoggedIn = () => {
   return (
     <Navigator initialRouteName="home" headerMode="none">
       <Screen name="home" component={Home} />
+
+      <Screen name="newPost" component={NewPost} />
     </Navigator>
   );
 };
