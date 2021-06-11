@@ -6,6 +6,9 @@ import { HelperText, TextInput } from 'react-native-paper';
 // Types
 import { LoginProps } from '../../@types/screenProps';
 
+// Actions
+import sessionActions from '../../store/actions/session.actions';
+
 // Services
 import loginService from '../../services/login.service';
 
@@ -34,6 +37,13 @@ const Login = ({ navigation }: LoginProps) => {
     await loginService({ email, password }, setErrors);
 
     setLoading(false);
+    sessionActions.setUser({
+      email: 'email@email.com',
+      name: 'Usuário teste',
+      image:
+        'https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    });
+    sessionActions.setType('logged');
   };
 
   useEffect(() => {
