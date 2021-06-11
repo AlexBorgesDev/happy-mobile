@@ -1,7 +1,9 @@
 import React from 'react';
 
 // Components
+import BtnNewPost from '../../components/BtnNewPost';
 import Post from '../../components/Post';
+import ShimmerPost from '../../components/ShimmerPost';
 
 import { Container, Content } from './styles';
 
@@ -9,6 +11,8 @@ const Home = () => {
   return (
     <Container>
       <Content showsVerticalScrollIndicator={false}>
+        <ShimmerPost />
+
         <Post
           id={1}
           slug="teste"
@@ -25,6 +29,8 @@ const Home = () => {
           }}
         />
       </Content>
+
+      <BtnNewPost />
     </Container>
   );
 };
