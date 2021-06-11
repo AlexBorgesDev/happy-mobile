@@ -6,6 +6,9 @@ import { TextInput as RNInput } from 'react-native';
 // Types
 import { RegisterProps } from '../../@types/screenProps';
 
+// Services
+import registerService from '../../services/register.service';
+
 import {
   Container,
   styles,
@@ -30,7 +33,9 @@ const Register = ({ navigation }: RegisterProps) => {
   const handleRegister = async () => {
     setLoading(true);
 
-    setTimeout(() => setLoading(false), 2500);
+    await registerService({ name, email, password }, setErrors);
+
+    setLoading(false);
   };
 
   useEffect(() => {
