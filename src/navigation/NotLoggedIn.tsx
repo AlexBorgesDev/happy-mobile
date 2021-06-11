@@ -9,6 +9,7 @@ import { NotLoggedScreens } from '../@types/navigation';
 
 // Pages
 import Login from '../screens/Login';
+import Register from '../screens/Register';
 
 const { Navigator, Screen } = createStackNavigator<NotLoggedScreens>();
 
@@ -20,6 +21,8 @@ const NotLoggedIn = () => {
   return (
     <Navigator initialRouteName="login" headerMode="none">
       <Screen name="login" component={Login} />
+
+      <Screen name="register" component={Register} />
     </Navigator>
   );
 };
