@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import { TextInput } from 'react-native-paper';
 import { TextInput as RNInput } from 'react-native';
-import { HelperText, TextInput } from 'react-native-paper';
 
 // Types
-import { LoginProps } from '../../@types/screenProps';
+import { RegisterProps } from '../../@types/screenProps';
 
 import {
   Container,
@@ -15,9 +15,11 @@ import {
   TextButton,
 } from './styles';
 
-const Login = ({ navigation }: LoginProps) => {
+const Register = ({ navigation }: RegisterProps) => {
+  const emailRef = useRef<RNInput>(null);
   const passwordRef = useRef<RNInput>(null);
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -25,11 +27,15 @@ const Login = ({ navigation }: LoginProps) => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     setLoading(true);
 
     setTimeout(() => setLoading(false), 2500);
   };
+
+  useEffect(() => {
+    setErrors(errs => errs.filter(err => err !== 'name'));
+  }, [name]);
 
   useEffect(() => {
     setErrors(errs => errs.filter(err => err !== 'email'));
@@ -44,6 +50,23 @@ const Login = ({ navigation }: LoginProps) => {
       <SvgLogo />
 
       <TextInput
+        mode="outlined"
+        label="Nome Completo"
+        value={name}
+        style={styles.input}
+        error={errors.includes('name')}
+        disabled={loading}
+        blurOnSubmit={false}
+        returnKeyType="next"
+        autoCapitalize="words"
+        textContentType="name"
+        autoCompleteType="name"
+        onChangeText={setName}
+        onSubmitEditing={() => emailRef.current?.focus()}
+      />
+
+      <TextInput
+        ref={emailRef}
         mode="outlined"
         label="Email"
         value={email}
@@ -73,7 +96,7 @@ const Login = ({ navigation }: LoginProps) => {
         textContentType="password"
         autoCompleteType="password"
         onChangeText={setPassword}
-        onSubmitEditing={handleLogin}
+        onSubmitEditing={handleRegister}
         right={
           <TextInput.Icon
             name={showPassword ? 'eye-off' : 'eye'}
@@ -82,27 +105,24 @@ const Login = ({ navigation }: LoginProps) => {
           />
         }
       />
-      <HelperText type="info" visible onPress={() => {}}>
-        Esqueci minha senha
-      </HelperText>
 
       <SubmitButton
         mode="contained"
         loading={loading}
         disabled={loading}
         contentStyle={styles.btn}
-        onPress={handleLogin}>
-        <SubmitButtonText>ENTRAR</SubmitButtonText>
+        onPress={handleRegister}>
+        <SubmitButtonText>CADASTRAR</SubmitButtonText>
       </SubmitButton>
 
       <TextButton
         mode="text"
         disabled={loading}
-        onPress={() => navigation.navigate('register')}>
-        <SubmitButtonText>NÂO TENHO UMA CONTA</SubmitButtonText>
+        onPress={() => navigation.navigate('login')}>
+        <SubmitButtonText>JÁ TENHO UMA CONTA</SubmitButtonText>
       </TextButton>
     </Container>
   );
 };
 
-export default Login;
+export default Register;
