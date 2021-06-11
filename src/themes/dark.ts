@@ -3,13 +3,13 @@ import { DefaultTheme } from 'react-native-paper';
 import { Theme } from '../@types/styled';
 
 const dark: Theme = {
-  color: '#111111',
+  color: '#ffffff',
   inverseColor: '#ffffff',
 
-  captionColor: '#757575',
+  captionColor: '#808080',
 
   primary: '#f4452e',
-  bodyBackground: '#f5f7f9',
+  bodyBackground: '#0F0F0F',
 };
 
 export const darkPaper: typeof DefaultTheme.colors = {
@@ -17,8 +17,9 @@ export const darkPaper: typeof DefaultTheme.colors = {
   text: dark.color,
   error: '#F4442E',
   primary: dark.primary,
-  surface: '#ffffff',
-  background: '#ffffff',
+  surface: '#808080',
+  background: '#121213',
+  placeholder: '#808080',
 };
 
 export default dark;

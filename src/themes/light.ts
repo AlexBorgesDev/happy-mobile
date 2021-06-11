@@ -17,6 +17,7 @@ export const lightPaper: typeof DefaultTheme.colors = {
   primary: light.primary,
   surface: '#ffffff',
   background: '#ffffff',
+  placeholder: '#303030',
 };
 
 export default light;
