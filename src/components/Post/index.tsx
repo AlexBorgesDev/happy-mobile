@@ -2,6 +2,8 @@ import React, { memo, useState } from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { useNavigation } from '@react-navigation/native';
+
 // Types
 import { PostType } from '../../@types/types';
 
@@ -23,7 +25,13 @@ import {
 } from './styles';
 
 const Post = (data: PostType) => {
+  const { navigate } = useNavigation();
+
   const [liked, setLiked] = useState(data.liked);
+
+  const handleComments = () => {
+    navigate('comments', { postId: data.id });
+  };
 
   return (
     <Container style={styles.shadow}>
@@ -41,7 +49,7 @@ const Post = (data: PostType) => {
       <ActionsContainer>
         <PostLike id={data.id} liked={liked} onLiked={setLiked} />
 
-        <ActionButton activeOpacity={0.8}>
+        <ActionButton activeOpacity={0.8} onPress={handleComments}>
           <Icon name="chat-outline" size={24} color={themes.get().color} />
         </ActionButton>
 
