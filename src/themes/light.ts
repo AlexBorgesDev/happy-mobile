@@ -1,6 +1,7 @@
 import { DefaultTheme } from 'react-native-paper';
 
 const light = {
+  gray: '#808080',
   color: '#111111',
   inverseColor: '#ffffff',
 

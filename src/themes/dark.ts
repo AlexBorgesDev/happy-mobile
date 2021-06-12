@@ -3,6 +3,7 @@ import { DefaultTheme } from 'react-native-paper';
 import { Theme } from '../@types/styled';
 
 const dark: Theme = {
+  gray: '#808080',
   color: '#ffffff',
   inverseColor: '#ffffff',
 
