@@ -46,3 +46,27 @@ export type PostLikeProps = {
   liked: boolean;
   onLiked: (liked: boolean) => void;
 };
+
+export type CommentType = {
+  id: number;
+  content: string;
+  fatherId: number | null;
+  createAt: string | Date;
+  updateAt: string | Date;
+  haveChildren: boolean;
+  post: {
+    id: number;
+    slug: string;
+  };
+  author: {
+    name: string;
+    image: string;
+  };
+};
+
+export type ApiReturnComments = {
+  page: number;
+  take: number;
+  data: CommentType[];
+  total: number;
+};
