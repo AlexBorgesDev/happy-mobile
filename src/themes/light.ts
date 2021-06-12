@@ -5,6 +5,7 @@ const light = {
   inverseColor: '#ffffff',
 
   captionColor: '#757575',
+  placeholderColor: '#757575',
 
   primary: '#f4452e',
   bodyBackground: '#f5f7f9',

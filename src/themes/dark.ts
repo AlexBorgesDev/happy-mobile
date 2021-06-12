@@ -7,6 +7,7 @@ const dark: Theme = {
   inverseColor: '#ffffff',
 
   captionColor: '#808080',
+  placeholderColor: '#808080',
 
   primary: '#f4452e',
   bodyBackground: '#0F0F0F',
