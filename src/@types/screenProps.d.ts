@@ -1,7 +1,7 @@
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { NotLoggedScreens } from './navigation';
+import { LoggedInScreens, NotLoggedScreens } from './navigation';
 
 export type LoginProps = {
   route: RouteProp<NotLoggedScreens, 'login'>;
@@ -11,4 +11,9 @@ export type LoginProps = {
 export type RegisterProps = {
   route: RouteProp<NotLoggedScreens, 'register'>;
   navigation: StackNavigationProp<NotLoggedScreens, 'register'>;
+};
+
+export type CommentsProps = {
+  route: RouteProp<LoggedInScreens, 'comments'>;
+  navigation: StackNavigationProp<LoggedInScreens, 'comments'>;
 };
