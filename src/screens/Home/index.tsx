@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { Modal, Portal } from 'react-native-paper';
 
 // Components
 import BtnNewPost from '../../components/BtnNewPost';
+import NewPost from '../../components/NewPost';
 import Post from '../../components/Post';
 import ShimmerPost from '../../components/ShimmerPost';
 
-import { Container, Content } from './styles';
+import { Container, Content, styles } from './styles';
 
 const Home = () => {
+  const [showNewPost, setShowNewPost] = useState(false);
+
   return (
     <Container>
       <Content showsVerticalScrollIndicator={false}>
@@ -30,7 +35,16 @@ const Home = () => {
         />
       </Content>
 
-      <BtnNewPost />
+      <BtnNewPost onPress={setShowNewPost} />
+
+      <Portal>
+        <Modal
+          visible={showNewPost}
+          contentContainerStyle={styles.modal}
+          onDismiss={() => setShowNewPost(false)}>
+          <NewPost onDismiss={() => setShowNewPost(false)} />
+        </Modal>
+      </Portal>
     </Container>
   );
 };
