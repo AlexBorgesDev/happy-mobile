@@ -5,3 +5,7 @@ export const Container = styled.View`
 
   background-color: ${({ theme }) => theme.bodyBackground};
 `;
+
+export const Scroll = styled.ScrollView`
+  flex: 1;
+`;

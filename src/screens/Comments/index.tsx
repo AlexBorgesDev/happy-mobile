@@ -6,7 +6,10 @@ import { StatusBar } from 'react-native';
 // Types
 import { CommentsProps } from '../../@types/screenProps';
 
-import { Container } from './styles';
+// Components
+import Comment from '../../components/Comment';
+
+import { Container, Scroll } from './styles';
 
 const Comments = (props: CommentsProps) => {
   const { postId } = props.route.params;
@@ -18,6 +21,26 @@ const Comments = (props: CommentsProps) => {
 
         <Appbar.Action icon="close" onPress={props.navigation.goBack} />
       </Appbar.Header>
+
+      <Scroll showsVerticalScrollIndicator={false}>
+        <Comment
+          id={1}
+          content="Comentário Teste"
+          createAt="2021-05-24T22:07:56.510Z"
+          updateAt="2021-05-24T22:07:56.510Z"
+          fatherId={null}
+          haveChildren={false}
+          post={{
+            id: postId,
+            slug: 'teste',
+          }}
+          author={{
+            name: 'Usuário Teste',
+            image:
+              'https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+          }}
+        />
+      </Scroll>
     </Container>
   );
 };
