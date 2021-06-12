@@ -2,15 +2,11 @@ import React, { memo } from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { useNavigation } from '@react-navigation/core';
-
 import { Container } from './styles';
 
-const BtnNewPost = () => {
-  const { navigate } = useNavigation();
-
+const BtnNewPost = (props: { onPress: (param: boolean) => void }) => {
   return (
-    <Container onPress={() => navigate('newPost')}>
+    <Container onPress={() => props.onPress(true)}>
       <Icon name="plus" size={28} color="#fff" />
     </Container>
   );
