@@ -18,6 +18,7 @@ export const AnswerContainer = styled.View`
 `;
 
 export const Content = styled.View`
+  flex: 1;
   margin-left: 12px;
 
   flex-direction: column;
