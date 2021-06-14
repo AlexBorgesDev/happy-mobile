@@ -42,6 +42,7 @@ const Comment = (data: CommentProps) => {
   const [finishedAnswers, setFinishedAnswers] = useState(false);
 
   const handleGetAnswers = async (p = page, reset?: boolean) => {
+    if (loading) return;
     setLoading(true);
 
     try {
