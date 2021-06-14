@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { TextInput as RNInput } from 'react-native';
 import { HelperText, TextInput } from 'react-native-paper';
 
@@ -7,6 +9,7 @@ import { HelperText, TextInput } from 'react-native-paper';
 import { LoginProps } from '../../@types/screenProps';
 
 // Actions
+import snackActions from '../../store/actions/snack.actions';
 import sessionActions from '../../store/actions/session.actions';
 
 // Services
@@ -34,16 +37,27 @@ const Login = ({ navigation }: LoginProps) => {
   const handleLogin = async () => {
     setLoading(true);
 
-    await loginService({ email, password }, setErrors);
+    try {
+      const res = await loginService({ email, password }, setErrors);
 
-    setLoading(false);
-    sessionActions.setUser({
-      email: 'email@email.com',
-      name: 'Usuário teste',
-      image:
-        'https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-    });
-    sessionActions.setType('logged');
+      if (!res?.data || !res?.token) return setLoading(false);
+
+      setLoading(false);
+      sessionActions.setUser(res.data);
+      await AsyncStorage.setItem('session_user', JSON.stringify(res.data));
+
+      sessionActions.setToken(res.token);
+      await AsyncStorage.setItem('session_token', res.token);
+
+      sessionActions.setType('logged');
+    } catch (err: any) {
+      if (err.response.status === 400 && err.response.data.errors) {
+        setErrors(Object.keys(err.response.data.errors));
+      } else if (err.response.status === 401) setErrors(['password']);
+      else snackActions.setMessage('Algo deu errado ao tentar fazer login');
+
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
