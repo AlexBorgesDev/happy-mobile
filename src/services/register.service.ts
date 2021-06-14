@@ -1,5 +1,6 @@
-import getYupErrorPaths from '../utils/getYupErrorPaths';
+import api from './api';
 
+import getYupErrorPaths from '../utils/getYupErrorPaths';
 import registerValidator from '../validators/register.validator';
 
 type Data = {
@@ -17,6 +18,10 @@ const registerService = async (data: Data, onInputErrors: InputErrors) => {
     onInputErrors(getYupErrorPaths(error));
     return;
   }
+
+  const { data: response } = await api.post('users', data);
+
+  return response as { message: string };
 };
 
 export default registerService;
