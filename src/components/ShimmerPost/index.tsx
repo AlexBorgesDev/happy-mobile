@@ -6,6 +6,7 @@ import {
   AuthorName,
   Avatar,
   Container,
+  File,
   PostData,
   Title,
   TitleContainer,
@@ -29,6 +30,8 @@ const ShimmerPost = () => {
       <TitleContainer>
         <Title shimmerColors={themes.get().shimmer} />
       </TitleContainer>
+
+      <File shimmerColors={themes.get().shimmer} />
     </Container>
   );
 };

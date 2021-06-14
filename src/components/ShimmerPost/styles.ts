@@ -2,8 +2,11 @@ import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
+import { Dimensions } from 'react-native';
 
 const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
+
+const fileHeight = 75 * (Dimensions.get('window').width / 100);
 
 export const Container = styled.View`
   width: 100%;
@@ -52,4 +55,9 @@ export const Title = styled(ShimmerPlaceHolder)`
   height: 15px;
 
   border-radius: 2.5px;
+`;
+
+export const File = styled(ShimmerPlaceHolder)`
+  width: 100%;
+  height: ${fileHeight}px;
 `;
