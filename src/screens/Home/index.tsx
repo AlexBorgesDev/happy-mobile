@@ -9,9 +9,11 @@ import { PostType } from '../../@types/types';
 
 // Components
 import BtnNewPost from '../../components/BtnNewPost';
+import FloatUserButton from '../../components/FloatUserButton';
 import NewPost from '../../components/NewPost';
 import Post from '../../components/Post';
 import ShimmerPost from '../../components/ShimmerPost';
+import UserModal from '../../components/UserModal';
 
 // Services
 import * as postService from '../../services/post.service';
@@ -37,6 +39,7 @@ const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [finishedPost, setFinishedPost] = useState(false);
 
+  const [showUser, setShowUser] = useState(false);
   const [showNewPost, setShowNewPost] = useState(false);
 
   const handleGetPosts = async (p = page, d = maxDate, refresh?: boolean) => {
@@ -77,17 +80,19 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const now = Date.now();
+    if (sessionToken) {
+      const now = Date.now();
 
-    postService.get(1, now, sessionToken).then(res => {
-      setPage(2);
-      setMaxDate(now);
-      setLoading(false);
+      postService.get(1, now, sessionToken).then(res => {
+        setPage(2);
+        setMaxDate(now);
+        setLoading(false);
 
-      setPosts(res.data);
+        setPosts(res.data);
 
-      res.total < res.take && setFinishedPost(true);
-    });
+        res.total < res.take && setFinishedPost(true);
+      });
+    }
   }, [sessionToken]);
 
   return (
@@ -126,6 +131,7 @@ const Home = () => {
         }
       />
 
+      <FloatUserButton onPress={() => setShowUser(true)} />
       <BtnNewPost onPress={setShowNewPost} />
 
       <Portal>
@@ -134,6 +140,13 @@ const Home = () => {
           contentContainerStyle={styles.modal}
           onDismiss={() => setShowNewPost(false)}>
           <NewPost onDismiss={() => setShowNewPost(false)} />
+        </Modal>
+
+        <Modal
+          visible={showUser}
+          contentContainerStyle={styles.modal}
+          onDismiss={() => setShowUser(false)}>
+          <UserModal onDismiss={() => setShowUser(false)} />
         </Modal>
       </Portal>
     </Container>
