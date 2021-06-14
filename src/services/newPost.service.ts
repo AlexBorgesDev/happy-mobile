@@ -13,8 +13,8 @@ const newPostService = async (data: Data, token?: string) => {
 
   const imageURL =
     Platform.OS === 'android'
-      ? data.image.sourceURL
-      : data.image.sourceURL?.replace('file://', '');
+      ? data.image.path
+      : data.image.path?.replace('file://', '');
 
   formData.append('title', data.title);
   formData.append('content', {
@@ -24,7 +24,10 @@ const newPostService = async (data: Data, token?: string) => {
   });
 
   await api.post('posts', formData, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'multipart/form-data',
+    },
   });
 };
 
