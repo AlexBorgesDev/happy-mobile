@@ -60,7 +60,7 @@ const NewPost = (props: { onDismiss: () => void }) => {
       snackActions.setMessage('Post publicado com sucesso');
 
       props.onDismiss();
-    } catch (err) {
+    } catch (err: any) {
       snackActions.setMessage('Erro ao tentar fazer um novo post');
       setLoading(false);
     }
