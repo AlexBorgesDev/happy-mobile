@@ -3,6 +3,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { TextInput } from 'react-native-paper';
 import { TextInput as RNInput } from 'react-native';
 
+// Actions
+import snackActions from '../../store/actions/snack.actions';
+
 // Types
 import { RegisterProps } from '../../@types/screenProps';
 
@@ -33,9 +36,24 @@ const Register = ({ navigation }: RegisterProps) => {
   const handleRegister = async () => {
     setLoading(true);
 
-    await registerService({ name, email, password }, setErrors);
+    try {
+      const res = await registerService({ name, email, password }, setErrors);
 
-    setLoading(false);
+      if (!res?.message) return setLoading(false);
+
+      snackActions.setMessage('Usuário cadastrado com sucesso');
+      navigation.navigate('login');
+    } catch (err: any) {
+      if (err.response.status === 400 && err.response.data.errors) {
+        setErrors(Object.keys(err.response.data.errors));
+      } else {
+        snackActions.setMessage(
+          'Algo deu errado ao tentar criar uma nova conta',
+        );
+      }
+
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
