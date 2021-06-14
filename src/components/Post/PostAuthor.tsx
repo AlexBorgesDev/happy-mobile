@@ -4,6 +4,9 @@ import moment from 'moment';
 
 import { Avatar } from 'react-native-paper';
 
+// Configs
+import apiConfigs from '../../configs/api.configs';
+
 // Types
 import { PostAuthorProps } from '../../@types/types';
 
@@ -15,7 +18,10 @@ import { AuthorContainer, AuthorContent, AuthorName, PostDate } from './styles';
 const PostAuthor = (data: PostAuthorProps) => {
   return (
     <AuthorContainer>
-      <Avatar.Image source={{ uri: data.author.image }} size={40} />
+      <Avatar.Image
+        source={{ uri: `${apiConfigs.baseUrl}${data.author.image}` }}
+        size={40}
+      />
 
       <AuthorContent>
         <AuthorName numberOfLines={1}>{data.author.name}</AuthorName>

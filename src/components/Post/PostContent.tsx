@@ -9,6 +9,9 @@ import { Animated, Dimensions } from 'react-native';
 // Actions
 import snackActions from '../../store/actions/snack.actions';
 
+// Configs
+import apiConfigs from '../../configs/api.configs';
+
 // Types
 import { PostContentProps } from '../../@types/types';
 
@@ -74,7 +77,7 @@ const PostContent = (props: PostContentProps) => {
     <ContentContainer activeOpacity={1} onPress={likedPress}>
       <AutoHeightImage
         width={width}
-        source={{ uri: props.content }}
+        source={{ uri: `${apiConfigs.baseUrl}${props.content}` }}
         maxHeight={maxHeight}
         resizeMode="cover"
       />
