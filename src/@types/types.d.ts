@@ -64,9 +64,30 @@ export type CommentType = {
   };
 };
 
+export type CommentProps = {
+  onAnswerPress: (data: { id: number; content: string }) => void;
+} & CommentType;
+
 export type ApiReturnComments = {
   page: number;
   take: number;
   data: CommentType[];
   total: number;
+};
+
+export type CommentInputProps = {
+  postId: number;
+  father?: { id: number; content: string } | undefined;
+  onNewComment?: (comment: CommentType) => void;
+  onNoCommentDad?: () => void;
+};
+
+export type ApiReturnNewComment = {
+  message: string;
+  data: CommentType;
+};
+
+export type LoginApiReturn = {
+  data: User;
+  token: string;
 };
