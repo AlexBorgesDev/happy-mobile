@@ -4,6 +4,9 @@ import moment from 'moment';
 
 import { Avatar } from 'react-native-paper';
 
+// Configs
+import apiConfigs from '../../configs/api.configs';
+
 // Types
 import { CommentType } from '../../@types/types';
 
@@ -15,7 +18,10 @@ import { AnswerContainer, Caption, Content, ContentText } from './styles';
 const CommentAnswer = (data: CommentType) => {
   return (
     <AnswerContainer>
-      <Avatar.Image size={32} source={{ uri: data.author.image }} />
+      <Avatar.Image
+        size={32}
+        source={{ uri: `${apiConfigs.baseUrl}${data.author.image}` }}
+      />
 
       <Content>
         <ContentText>{data.content}</ContentText>
