@@ -50,6 +50,11 @@ const UserModal = (props: UserModalProps) => {
     props.onDismiss();
   };
 
+  const handleMySavedPosts = () => {
+    props.navigation.navigate('userSavedPosts');
+    props.onDismiss();
+  };
+
   return (
     <Container>
       <Header>
@@ -93,7 +98,7 @@ const UserModal = (props: UserModalProps) => {
 
       <Divider />
 
-      <Button onPress={() => {}}>
+      <Button onPress={handleMySavedPosts}>
         <BtnText>Posts Salvos</BtnText>
 
         <Icon
