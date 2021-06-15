@@ -1,3 +1,4 @@
+import { Image } from 'react-native-image-crop-picker';
 import { LoggedInScreens } from './navigation';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -98,4 +99,19 @@ export type LoginApiReturn = {
 export type UserModalProps = {
   onDismiss: () => void;
   navigation: StackNavigationProp<LoggedInScreens>;
+};
+
+export type UserServiceUpdateData = {
+  name: string | undefined;
+  email: string | undefined;
+  image: Image | undefined;
+};
+
+export type ReturnApiUserUpdate = {
+  message: string;
+  data: {
+    name?: string;
+    email?: string;
+    image?: string;
+  };
 };
