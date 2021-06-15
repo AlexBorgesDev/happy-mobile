@@ -10,6 +10,7 @@ import { LoggedInScreens } from '../@types/navigation';
 // Screens
 import Home from '../screens/Home';
 import Comments from '../screens/Comments';
+import EditProfile from '../screens/EditProfile';
 import UserPosts from '../screens/UserPosts';
 import UserSavedPosts from '../screens/UserSavedPosts';
 
@@ -25,6 +26,8 @@ const LoggedIn = () => {
       <Screen name="home" component={Home} />
 
       <Screen name="comments" component={Comments} />
+
+      <Screen name="editProfile" component={EditProfile} />
 
       <Screen name="userPosts" component={UserPosts} />
 
