@@ -111,10 +111,9 @@ const UserPosts = ({ navigation }: UserPostsProps) => {
             {!loading && finished && (
               <>
                 <FinishedText>
-                  Ops!
                   {posts.length > 0
-                    ? ' Esses são todos os seus posts.'
-                    : ' Você ainda não fez nenhum post.'}
+                    ? 'Esses são todos os seus posts.'
+                    : 'Ops! Você ainda não fez nenhum post.'}
                 </FinishedText>
 
                 <FinishedButton mode="text" onPress={updateFeed}>
