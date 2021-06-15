@@ -38,7 +38,12 @@ const NewPost = (props: { onDismiss: () => void }) => {
       const img = await ImagePicker.openPicker({
         cropping: true,
         mediaType: 'photo',
+        cropperToolbarTitle: 'Editar Imagem',
         freeStyleCropEnabled: true,
+        cropperToolbarColor: '#f4452e',
+        cropperStatusBarColor: '#f4452e',
+        cropperActiveWidgetColor: '#f4452e',
+        cropperToolbarWidgetColor: '#ffffff',
       });
 
       setImage(img);
