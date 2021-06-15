@@ -17,3 +17,12 @@ export type CommentsProps = {
   route: RouteProp<LoggedInScreens, 'comments'>;
   navigation: StackNavigationProp<LoggedInScreens, 'comments'>;
 };
+
+export type UserPostsProps = {
+  route: RouteProp<LoggedInScreens, 'userPosts'>;
+  navigation: StackNavigationProp<LoggedInScreens, 'userPosts'>;
+};
+
+export type GenericLoggedInNavigation = {
+  navigation: StackNavigationProp<LoggedInScreens>;
+};
