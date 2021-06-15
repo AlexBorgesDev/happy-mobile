@@ -45,6 +45,11 @@ const UserModal = (props: UserModalProps) => {
     }
   };
 
+  const handleEditProfile = () => {
+    props.navigation.navigate('editProfile');
+    props.onDismiss();
+  };
+
   const handleMyPosts = () => {
     props.navigation.navigate('userPosts');
     props.onDismiss();
@@ -78,7 +83,7 @@ const UserModal = (props: UserModalProps) => {
 
       <Divider />
 
-      <Button onPress={() => {}}>
+      <Button onPress={handleEditProfile}>
         <BtnText>Editar Perfil</BtnText>
 
         <Icon
