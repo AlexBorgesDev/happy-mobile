@@ -10,6 +10,7 @@ import { LoggedInScreens } from '../@types/navigation';
 // Screens
 import Home from '../screens/Home';
 import Comments from '../screens/Comments';
+import UserPosts from '../screens/UserPosts';
 
 const { Navigator, Screen } = createStackNavigator<LoggedInScreens>();
 
@@ -23,6 +24,8 @@ const LoggedIn = () => {
       <Screen name="home" component={Home} />
 
       <Screen name="comments" component={Comments} />
+
+      <Screen name="userPosts" component={UserPosts} />
     </Navigator>
   );
 };
