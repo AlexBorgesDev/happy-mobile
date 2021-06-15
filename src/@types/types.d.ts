@@ -1,3 +1,6 @@
+import { LoggedInScreens } from './navigation';
+import { StackNavigationProp } from '@react-navigation/stack';
+
 export type User = {
   name: string;
   email: string;
@@ -90,4 +93,9 @@ export type ApiReturnNewComment = {
 export type LoginApiReturn = {
   data: User;
   token: string;
+};
+
+export type UserModalProps = {
+  onDismiss: () => void;
+  navigation: StackNavigationProp<LoggedInScreens>;
 };
