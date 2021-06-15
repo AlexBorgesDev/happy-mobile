@@ -3,10 +3,10 @@ import api from './api';
 import { ApiReturnPosts } from '../@types/types';
 
 class SavedPostService {
-  private readonly id: number;
+  private readonly id: number | undefined;
   private readonly token: string | undefined;
 
-  constructor(id: number, token?: string) {
+  constructor(id?: number, token?: string) {
     this.id = id;
     this.token = token;
   }
