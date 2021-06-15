@@ -6,4 +6,5 @@ export type NotLoggedScreens = {
 export type LoggedInScreens = {
   home: undefined;
   comments: { postId: number };
+  userPosts: undefined;
 };
