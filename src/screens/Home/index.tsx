@@ -6,6 +6,7 @@ import { FlatList, RefreshControl } from 'react-native';
 
 // Types
 import { PostType } from '../../@types/types';
+import { GenericLoggedInNavigation } from '../../@types/screenProps';
 
 // Components
 import BtnNewPost from '../../components/BtnNewPost';
@@ -26,7 +27,7 @@ import {
   styles,
 } from './styles';
 
-const Home = () => {
+const Home = ({ navigation }: GenericLoggedInNavigation) => {
   const sessionToken = useSelector(state => state.session.token);
 
   const contentRef = useRef<FlatList>(null);
@@ -43,8 +44,9 @@ const Home = () => {
   const [showNewPost, setShowNewPost] = useState(false);
 
   const handleGetPosts = async (p = page, d = maxDate, refresh?: boolean) => {
-    if (loading) return;
-    setLoading(true);
+    if (loading || refreshing) return;
+    refresh && setRefreshing(true);
+    refresh && setLoading(true);
 
     try {
       const data = await postService.get(p, d, sessionToken);
@@ -55,7 +57,8 @@ const Home = () => {
       data.total < data.take && setFinishedPost(true);
     } catch (err) {}
 
-    setLoading(false);
+    refresh && setRefreshing(false);
+    refresh && setLoading(false);
   };
 
   const handleRefresh = async () => {
@@ -63,11 +66,7 @@ const Home = () => {
 
     setPosts([]);
     setMaxDate(now);
-    setRefreshing(true);
-
     await handleGetPosts(1, now, true);
-
-    setRefreshing(false);
   };
 
   const updateFeed = () => {
@@ -146,7 +145,10 @@ const Home = () => {
           visible={showUser}
           contentContainerStyle={styles.modal}
           onDismiss={() => setShowUser(false)}>
-          <UserModal onDismiss={() => setShowUser(false)} />
+          <UserModal
+            navigation={navigation}
+            onDismiss={() => setShowUser(false)}
+          />
         </Modal>
       </Portal>
     </Container>

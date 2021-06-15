@@ -13,6 +13,9 @@ import sessionActions from '../../store/actions/session.actions';
 // Configs
 import apiConfigs from '../../configs/api.configs';
 
+// Types
+import { UserModalProps } from '../../@types/types';
+
 import themes from '../../themes';
 
 import {
@@ -26,7 +29,7 @@ import {
   styles,
 } from './styles';
 
-const UserModal = (props: { onDismiss: () => void }) => {
+const UserModal = (props: UserModalProps) => {
   const user = useSelector(state => state.session.user);
 
   const handleLogOut = async () => {
@@ -40,6 +43,11 @@ const UserModal = (props: { onDismiss: () => void }) => {
     } catch (err) {
       snackActions.setMessage('Algo deu errado ao tentar finalizar a sessão');
     }
+  };
+
+  const handleMyPosts = () => {
+    props.navigation.navigate('userPosts');
+    props.onDismiss();
   };
 
   return (
@@ -77,7 +85,7 @@ const UserModal = (props: { onDismiss: () => void }) => {
 
       <Divider />
 
-      <Button onPress={() => {}}>
+      <Button onPress={handleMyPosts}>
         <BtnText>Meus Posts</BtnText>
 
         <Icon size={20} name="post-outline" color={themes.get().captionColor} />
