@@ -5,7 +5,7 @@ import { FlatList } from 'react-native';
 
 import { CommentType } from '../../@types/types';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   flex: 1;
 
   background-color: ${({ theme }) => theme.bodyBackground};
