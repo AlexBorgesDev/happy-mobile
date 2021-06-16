@@ -76,5 +76,4 @@ jobs:
         path: |
           ~/cache
           !~/cache/exclude
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }
     
