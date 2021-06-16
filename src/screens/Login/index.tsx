@@ -111,9 +111,9 @@ const Login = ({ navigation }: LoginProps) => {
           />
         }
       />
-      <HelperText type="info" visible onPress={() => {}}>
+      {/* <HelperText type="info" visible onPress={() => {}}>
         Esqueci minha senha
-      </HelperText>
+      </HelperText> */}
 
       <SubmitButton
         mode="contained"
