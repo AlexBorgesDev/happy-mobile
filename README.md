@@ -4,7 +4,9 @@
 
 # Happy - Mobile
 
-> :information_source: Veja a [APi aqui](https://github.com/AlexBorgesDev/happy-api).
+> :information_source: Veja a documentação da [APi aqui](https://github.com/AlexBorgesDev/happy-api).
+>
+> :warning: O aplicativo não foi otimizado para IOS.
 
 Happy é uma rede social focada nos famosos memes, com o intuito de ser uma lugar divertido e alegre. Aqui você alem de ver os memes produzidos por outros, você pode compartilhar os seus próprios, tornando a comunidade cada vez maior e mais alegre.
 
