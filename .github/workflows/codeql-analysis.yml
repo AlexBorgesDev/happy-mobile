@@ -76,4 +76,4 @@ jobs:
         path: |
           ~/cache
           !~/cache/exclude
-    
+        key: ${{ runner.os }}-primes
